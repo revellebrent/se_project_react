@@ -3,6 +3,9 @@ import { useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "../../vendor/fonts.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
@@ -12,9 +15,11 @@ function App() {
       <div className="page__content">
         <Header />
         <Main weatherData={weatherData} />
+        <Footer />
       </div>
+      <ModalWithForm />
     </div>
   );
 }
 
-export default App
+export default App;
