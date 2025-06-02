@@ -1,13 +1,13 @@
 import "./ModalWithForm.css";
-import closeIcon from "../assets/close-icon.svg";
+import closeIcon from "../../assets/close-icon.png";
 
 function ModalWithForm() {
    return (
    <div className="modal">
     <div className="modal__content">
       <h2 className="modal__title">New garment</h2>
-      <button type="button" className="modal__close">
-         CLOSE
+      <button type="button" className="modal__close" aria-label="Close modal">
+        <img src={closeIcon} alt="close icon" className="modal__close-icon" />
          </button>
    <form className="modal__form">
          <label htmlFor="name" className="modal__label">
