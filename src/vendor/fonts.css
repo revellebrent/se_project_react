@@ -3,6 +3,7 @@
     font-family: 'Cabinet Grotesk';
     src: url("../src/vendor/fonts/CabinetGrotesk-bold.otf") format("opentype");
     font-weight: 700;
+    font-style: normal;
 }
 
 /* Medium weight */
@@ -10,4 +11,5 @@
     font-family: 'Cabinet Grotesk';
     src: url("../src/vendor/fonts/CabinetGrotesk-medium.otf") format("opentype");
     font-weight: 500;
+    font-style: normal;
 }

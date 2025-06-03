@@ -1,0 +1,45 @@
+.modal__content_type_image {
+  width: 498px;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+
+}
+
+.modal__image {
+  width: 498px;
+  /* height: 498px; */
+  object-fit: cover;
+  display: block;
+}
+
+.modal__caption {
+  font-family: "CabinetGrotesk";
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 20px 0 12px;
+}
+
+.modal__weather {
+  font-family: "CabinetGrotesk";
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.modal__footer {
+  background-color: #fff;
+  padding-left: 32px;
+}
+
+.modal__close {
+  background-color: transparent;
+  padding: 0;
+  top: 20px;
+  right: 20px;
+}
+
