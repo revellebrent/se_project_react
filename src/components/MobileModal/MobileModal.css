@@ -1,0 +1,33 @@
+@media screen and (min-width: 768px) {
+  /* .header__hamburger {
+    display: none;
+  }
+
+  .mobile-modal {
+    display: none;
+  } */
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* height: 100vh; */
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+  }
+
+  .modal__content {
+    background: #fff;
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    position: relative;
+    border-radius: 10px;
+  }
+}

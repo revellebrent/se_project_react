@@ -4,6 +4,7 @@ import headerLogo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import hamburgerIcon from "../../assets/hamburger-icon.svg";
 import closeIcon from "../../assets/close-icon.png";
+import MobileModal from "../MobileModal/MobileModal";
 
 function Header({ handleAddClick, weatherData }) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -18,6 +19,7 @@ function Header({ handleAddClick, weatherData }) {
 });
 
   return (
+    <>
    <header className="header">
     <img
     className="header__logo"
@@ -51,6 +53,13 @@ onClick={toggleMobileMenu}
       <img className="header__avatar" src={avatar} alt="Terrence Tegegne" />
     </div>
   </header>
+
+  <MobileModal
+  isOpen={isMobileMenuOpened}
+  onClose={toggleMobileMenu}
+  handleAddClick={handleAddClick}
+  />
+  </>
   );
 }
 
