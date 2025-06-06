@@ -11,7 +11,7 @@ function Main({ weatherData, handleCardClick }) {
       <p className="cards__text">
         Today is {weatherData.temp.F} &deg; F / You may want to wear:
         </p>
-        <ul className="cards__list">
+        <ul className="cards__list" aria-label="clothing items">
           {defaultClothingItems
           .filter((item) => {
             return item.weather === weatherData.type;
