@@ -9,7 +9,6 @@
 
 .modal__image {
   width: 498px;
-  /* height: 498px; */
   object-fit: cover;
   display: block;
 }
@@ -47,3 +46,16 @@
   border: none;
 }
 
+@media screen and (max-width: 523px) {
+  .modal__image {
+    max-width: 343px;
+  }
+
+  .modal__content_type_image {
+    max-width: 343px;
+}
+
+  .modal__weather {
+    margin-bottom: 40px;
+}
+}

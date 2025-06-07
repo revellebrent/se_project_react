@@ -25,6 +25,7 @@
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .header__user-container {
@@ -53,29 +54,24 @@
 @media screen and (max-width: 768px) {
 
   .header {
-   padding-top: 18px;
-   position: relative;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 18px 0 16px;
+   gap: 32px;
   }
 
   .header__logo {
-    margin: 2px 0 32px 0;
+    margin: 0;
   }
 
   .header__hamburger {
     display: block;
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: translateY(18px);
+    right: 16px;
+    top: 18px;
+    background: none;
+    border: none;
     }
-
-
-
-  .header__date-and-location {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 16px;
-  }
 
   .header__add-clothes-btn {
     display: none;

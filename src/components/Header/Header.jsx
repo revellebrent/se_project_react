@@ -4,7 +4,7 @@ import headerLogo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import hamburgerIcon from "../../assets/hamburger-icon.svg";
 import closeIcon from "../../assets/close-icon.png";
-import MobileModal from "../MobileModal/MobileModal";
+import MobileDrawer from "../MobileDrawer/MobileDrawer";
 
 function Header({ handleAddClick, weatherData }) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -54,7 +54,7 @@ onClick={toggleMobileMenu}
     </div>
   </header>
 
-  <MobileModal
+  <MobileDrawer
   isOpen={isMobileMenuOpened}
   onClose={toggleMobileMenu}
   handleAddClick={handleAddClick}

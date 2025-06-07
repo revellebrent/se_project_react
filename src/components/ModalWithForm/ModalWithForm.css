@@ -33,6 +33,7 @@
   right: 28px;
   background-color: #fff;
   border: none;
+  cursor: pointer;
 }
 
 .modal__content {
@@ -47,6 +48,7 @@
 
 .modal__label {
   margin-bottom: 24px;
+  cursor: pointer;
 }
 
 .modal__label_type_radio {
@@ -73,6 +75,7 @@
   width: 100%;
   border: none;
   border-bottom: 1px solid #000;
+  cursor: pointer;
 }
 
 .modal__input::placeholder {
@@ -99,6 +102,7 @@
   padding: 8px 16px;
   width:fit-content;
   display: inline-block;
+  cursor: pointer;
 }
 
 .modal__submit:hover {
