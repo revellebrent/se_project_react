@@ -16,10 +16,8 @@ function MobileDrawer ({ isOpen, onClose, handleAddClick }) {
 
 
   return (
-    <>
-    {isOpen && (
       <div
-      className="mobile-drawer__overlay"
+      className={`mobile-drawer__overlay ${isOpen ? "active" : ""}`}
       onClick={handleOverlayClick}
       >
         <div
@@ -52,8 +50,6 @@ function MobileDrawer ({ isOpen, onClose, handleAddClick }) {
         </button>
       </div>
       </div>
-      )}
-      </>
   );
 }
 
