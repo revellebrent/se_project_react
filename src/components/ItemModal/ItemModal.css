@@ -4,7 +4,14 @@
   background-color: #fff;
   border-radius: 16px;
   overflow: hidden;
+  transform: translateY(20px);
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
+.modal_opened .modal__content_type_image {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .modal__image {
@@ -44,6 +51,7 @@
   right: 20px;
   position: absolute;
   border: none;
+
 }
 
 @media screen and (max-width: 523px) {
@@ -53,9 +61,9 @@
 
   .modal__content_type_image {
     max-width: 343px;
-}
+  }
 
   .modal__weather {
     margin-bottom: 40px;
-}
+  }
 }

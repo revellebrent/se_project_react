@@ -13,10 +13,13 @@
   font-size: 16px;
   line-height: 20px;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
 }
 
 .modal_opened {
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__title {
@@ -44,6 +47,14 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 20px;
+  transform: translate(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal_opened .modal__content {
+  transform: translate(0);
+  opacity: 1;
 }
 
 .modal__label {
@@ -101,7 +112,7 @@
   border: none;
   border-radius: 4px;
   padding: 8px 16px;
-  width:fit-content;
+  width: fit-content;
   display: inline-block;
   cursor: pointer;
 }

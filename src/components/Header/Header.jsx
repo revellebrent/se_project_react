@@ -13,53 +13,50 @@ function Header({ handleAddClick, weatherData }) {
     setIsMobileMenuOpened((prev) => !prev);
   };
 
- const currentDate = new Date().toLocaleString('default', {
-  month: 'long',
-  day: 'numeric',
-});
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <>
-   <header className="header">
-    <img
-    className="header__logo"
-    src={headerLogo}
-    alt="Header logo" />
-    <p
-    className="header__date-and-location">
-      {currentDate}, {weatherData.city}
-      </p>
+      <header className="header">
+        <img className="header__logo" src={headerLogo} alt="Header logo" />
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData.city}
+        </p>
 
-<button
-className="header__hamburger"
-aria-label="Open mobile menu"
-onClick={toggleMobileMenu}
->
-  <img
-  src={isMobileMenuOpened ? closeIcon : hamburgerIcon}
-  alt={isMobileMenuOpened ? "Close menu" : "Open menu"}
-  />
-</button>
+        <button
+          className="header__hamburger"
+          aria-label="Open mobile menu"
+          onClick={toggleMobileMenu}
+        >
+          <img
+            src={isMobileMenuOpened ? closeIcon : hamburgerIcon}
+            alt={isMobileMenuOpened ? "Close menu" : "Open menu"}
+          />
+        </button>
 
-<button
-    onClick={handleAddClick}
-    type="button"
-    className="header__add-clothes-btn">
-      + Add clothes
-      </button>
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-btn"
+        >
+          + Add clothes
+        </button>
 
-    <div className="header__user-container">
-      <p className="header__username">Terrence Tegegne</p>
-      <img className="header__avatar" src={avatar} alt="Terrence Tegegne" />
-    </div>
-  </header>
+        <div className="header__user-container">
+          <p className="header__username">Terrence Tegegne</p>
+          <img className="header__avatar" src={avatar} alt="Terrence Tegegne" />
+        </div>
+      </header>
 
-  <MobileDrawer
-  isOpen={isMobileMenuOpened}
-  onClose={toggleMobileMenu}
-  handleAddClick={handleAddClick}
-  />
-  </>
+      <MobileDrawer
+        isOpen={isMobileMenuOpened}
+        onClose={toggleMobileMenu}
+        handleAddClick={handleAddClick}
+      />
+    </>
   );
 }
 

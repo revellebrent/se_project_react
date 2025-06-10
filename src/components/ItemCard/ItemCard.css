@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 480px) {
   .item-card {
-   width: 164px;
-   height: 164px;
+    width: 164px;
+    height: 164px;
   }
 }

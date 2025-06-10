@@ -66,7 +66,7 @@ export const defaultWeatherOptions = {
     url: new URL("../assets/day/fallback.png", import.meta.url).href,
   },
   night: {
-    url: new URL ("../assets/night/fallback.png", import.meta.url).href,
+    url: new URL("../assets/night/fallback.png", import.meta.url).href,
   },
 };
 
