@@ -3,11 +3,10 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 
 import "./Main.css";
 
-function Main({ weatherData, handleCardClick }) {
+function Main({ weatherData, handleCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <main>
@@ -21,7 +20,7 @@ function Main({ weatherData, handleCardClick }) {
           &deg; / You may want to wear:
         </p>
         <ul className="cards__list" aria-label="clothing items">
-          {defaultClothingItems
+          {clothingItems
             .filter((item) => {
               return item.weather === weatherData.type;
             })

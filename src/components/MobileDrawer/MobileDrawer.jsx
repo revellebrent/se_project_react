@@ -1,5 +1,7 @@
 import React from "react";
 import "./MobileDrawer.css";
+import { useLocation } from "react-router-dom";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import avatar from "../../assets/avatar.png";
 import blackCloseIcon from "../../assets/black-closeicon.svg";
 
@@ -9,6 +11,9 @@ function MobileDrawer({ isOpen, onClose, handleAddClick }) {
       onClose();
     }
   };
+
+  const location = useLocation();
+  const isProfilePage = location.pathname === "/profile";
 
   const handleDrawerContentClick = (evt) => {
     evt.stopPropagation();
@@ -37,11 +42,16 @@ function MobileDrawer({ isOpen, onClose, handleAddClick }) {
         </div>
 
         <button
-          className="mobile-drawer__add-clothes-btn"
+          className={`mobile-drawer__add-clothes-btn ${isProfilePage ? "mobile-drawer__add-clothes-btn_profile" : ""}`}
           onClick={handleAddClick}
         >
           + Add Clothes
         </button>
+        {isProfilePage && (
+          <div className="mobile-drawer__toggle-wrapper">
+            <ToggleSwitch />
+            </div>
+        )}
       </div>
     </div>
   );

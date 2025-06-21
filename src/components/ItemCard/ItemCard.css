@@ -1,12 +1,13 @@
 .item-card {
   position: relative;
-  width: 323px;
+  max-width: 323px;
   height: 326px;
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .card__name {
@@ -27,9 +28,21 @@
   width: 100%;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 700px) {
   .item-card {
-    width: 164px;
-    height: 164px;
+    width: 100%;
+    max-width: 323px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .item-card {
+    width: 100%;
+    max-width: 145px;
+    max-height: 145px;
+  }
+
+  .card__name {
+    top: 7px;
   }
 }

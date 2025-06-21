@@ -2,20 +2,20 @@ import { useEffect } from "react";
 import "./ItemModal.css";
 import closeWhiteIcon from "../../assets/white-closeicon.png";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ isOpen, onClose, card, onDelete }) {
   useEffect(() => {
     const handleKeyDown = (evt) => {
       if (evt.key === "Escape") onClose();
     };
 
-    if (activeModal === "preview") {
+    if (isOpen) {
       window.addEventListener("keydown", handleKeyDown);
     }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeModal, onClose]);
+  }, [isOpen, onClose]);
 
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -25,27 +25,38 @@ function ItemModal({ activeModal, onClose, card }) {
 
   return (
     <div
-      className={`modal ${activeModal === "preview" && "modal_opened"}`}
+      className={`modal modal_type_image ${isOpen ? "modal_opened" : ""}`}
       onClick={handleOverlayClick}
     >
       <div className="modal__content modal__content_type_image">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close"
+          className="item-modal__close"
           aria-label="Close modal"
         >
           <img
             src={closeWhiteIcon}
             alt="close icon"
-            className="modal__close-icon"
+            className="item-modal__close-icon"
           />
         </button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl || card.link} alt={card.name} className="modal__image" />
         <div className="modal__footer">
+          <div className="modal__footer-top">
           <h2 className="modal__caption">{card.name}</h2>
+          <button className="modal__delete-btn"
+          onClick={() => {
+            onDelete(card);
+            onClose();
+          }}
+          >
+            Delete item
+            </button>
+            </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
+
       </div>
     </div>
   );

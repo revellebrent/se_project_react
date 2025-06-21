@@ -10,6 +10,9 @@
   transition: transform 0.3s ease-in-out;
   box-sizing: border-box;
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mobile-drawer.open {
@@ -80,4 +83,19 @@
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-drawer__toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 40px 0;
+}
+
+.mobile-drawer__add-clothes-btn {
+  margin-bottom: 24px;
+}
+
 }

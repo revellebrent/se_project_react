@@ -120,3 +120,10 @@
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+@media screen and (max-width: 768px) {
+  .modal_form {
+    align-items: flex-end;
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,24 @@
+.modal__content_type_add {
+  padding: 28px 28px 36px;
+  background-color: #fff;
+  position: relative;
+  max-width: 496px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal_opened .modal__content_type_add {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .modal__content_type_add {
+    max-width: 343px;
+    padding: 28px 16px 36px;
+  }
+}

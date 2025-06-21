@@ -53,6 +53,11 @@
   height: 44px;
 }
 
+.header__link {
+  text-decoration: none;
+  color: #000;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -68,7 +73,7 @@
   .header__hamburger {
     display: block;
     position: absolute;
-    right: 16px;
+    right: 0;
     top: 18px;
     background: none;
     border: none;
@@ -81,4 +86,21 @@
   .header__user-container {
     display: none;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  .header_profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 20px 0 22px;
+  }
+
+  .header__date-and-location_profile {
+   font-size: 16px;
+   margin-left: 12px;
+  }
+
 }

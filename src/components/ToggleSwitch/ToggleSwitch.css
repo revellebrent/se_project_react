@@ -71,3 +71,9 @@
 .toggle-switch__text_color_white {
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .toggle-switch {
+    margin: 0;
+  }
+}

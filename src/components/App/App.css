@@ -4,6 +4,10 @@
 
 .page__content {
   max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 20px;
+  margin: 0;
+  padding: 0 40px;
+}
+
+.page__content-mobile {
+  padding: 0 16px;
 }
