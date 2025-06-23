@@ -1,32 +1,13 @@
-import { useEffect } from "react";
 import "./ItemModal.css";
 import closeWhiteIcon from "../../assets/white-closeicon.png";
+import useModalClose from "../../hooks/useModalClose";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
-  useEffect(() => {
-    const handleKeyDown = (evt) => {
-      if (evt.key === "Escape") onClose();
-    };
-
-    if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  const handleOverlayClick = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      onClose();
-    }
-  };
+  useModalClose(isOpen, onClose);
 
   return (
     <div
       className={`modal modal_type_image ${isOpen ? "modal_opened" : ""}`}
-      onClick={handleOverlayClick}
     >
       <div className="modal__content modal__content_type_image">
         <button
@@ -41,22 +22,23 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
             className="item-modal__close-icon"
           />
         </button>
-        <img src={card.imageUrl || card.link} alt={card.name} className="modal__image" />
+        <img
+          src={card.imageUrl || card.link}
+          alt={card.name}
+          className="modal__image"
+        />
         <div className="modal__footer">
           <div className="modal__footer-top">
-          <h2 className="modal__caption">{card.name}</h2>
-          <button className="modal__delete-btn"
-          onClick={() => {
-            onDelete(card);
-            onClose();
-          }}
-          >
-            Delete item
+            <h2 className="modal__caption">{card.name}</h2>
+            <button
+              className="modal__delete-btn"
+              onClick={() => onDelete(card)}
+            >
+              Delete item
             </button>
-            </div>
+          </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
-
       </div>
     </div>
   );

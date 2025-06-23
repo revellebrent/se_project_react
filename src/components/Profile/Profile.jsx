@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 
 import "./Profile.css";
 
-function Profile({ onCardClick, clothingItems }) {
+function Profile({ onCardClick, onAddClick, clothingItems }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
@@ -13,6 +13,7 @@ function Profile({ onCardClick, clothingItems }) {
       <section className="profile__clothing-items">
         <ClothesSection
           onCardClick={onCardClick}
+          onAddClick={onAddClick}
           clothingItems={clothingItems}
         />
       </section>

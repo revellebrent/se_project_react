@@ -21,7 +21,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import "./App.css";
 import "../../vendor/fonts.css";
 // import { defaultClothingItems } from "../../utils/constants"; //temporary
-import { getItems, deleteItem, addItem } from "../../utils/Api";
+import { getItems, deleteItem, addItem } from "../../utils/api";
 
 function App() {
   const location = useLocation();
@@ -66,15 +66,23 @@ function App() {
 
   const closeActiveModal = () => {
     setActiveModal("");
+    setIsConfirmModalOpen(false);
+    setItemDelete(undefined);
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, imageUrl, weather })
-    .then((newItem) => {
-      setClothingItems((prevItems) => [newItem, ...prevItems]);
-      closeActiveModal();
-    })
-    .catch(console.error);
+    setIsLoading(true);
+    return addItem({ name, imageUrl, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleOpenConfirmModal = (card) => {
@@ -83,14 +91,12 @@ function App() {
   };
 
   const handleCardDelete = () => {
-    deleteItem(itemDelete._id)
+    deleteItem(itemDelete._id || itemDelete.id)
       .then(() => {
         setClothingItems((items) =>
           items.filter((item) => item._id !== itemDelete._id)
         );
         closeActiveModal();
-        setIsConfirmModalOpen(false);
-        setItemDelete();
       })
       .catch(console.error);
   };
@@ -117,7 +123,11 @@ function App() {
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
-        <div className={`page__content ${isProfilePage && isMobile ? "page__content-mobile" : ""}`}>
+        <div
+          className={`page__content ${
+            isProfilePage && isMobile ? "page__content-mobile" : ""
+          }`}
+        >
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
           <Routes>
             <Route
@@ -135,6 +145,7 @@ function App() {
               element={
                 <Profile
                   onCardClick={handleCardClick}
+                  onAddClick={handleAddClick}
                   clothingItems={clothingItems}
                 />
               }
@@ -147,6 +158,7 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
           onAddItemModalSubmit={handleAddItemModalSubmit}
+          isLoading={isLoading}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
@@ -156,7 +168,10 @@ function App() {
         />
         <DeleteConfirmationModal
           isOpen={isConfirmModalOpen}
-          onClose={() => setIsConfirmModalOpen(false)}
+          onClose={() => {
+            setIsConfirmModalOpen(false);
+            setItemDelete(undefined);
+          }}
           onConfirm={handleCardDelete}
         />
       </div>
