@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ onCardClick, onAddClick, clothingItems }) {
+function ClothesSection({ onCardClick, onAddClick, clothingItems, onCardLike }) {
   const location = useLocation();
   const isProfilePage = location.pathname === "/profile";
 
@@ -19,6 +19,7 @@ function ClothesSection({ onCardClick, onAddClick, clothingItems }) {
                 key={item._id}
                 item={item}
                 onCardClick={onCardClick}
+                onCardLike={onCardLike}
               />
             );
           })}
