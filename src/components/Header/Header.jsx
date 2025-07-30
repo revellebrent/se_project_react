@@ -9,7 +9,7 @@ import MobileDrawer from "../MobileDrawer/MobileDrawer";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({ handleAddClick, weatherData, isLoggedIn, currentUser, onRegisterClick, onLoginClick }) {
   const location = useLocation();
   const isProfilePage = location.pathname === "/profile";
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -56,6 +56,26 @@ function Header({ handleAddClick, weatherData }) {
 
         {!(isProfilePage && isMobile) && <ToggleSwitch />}
 
+        {/* show sign up and log in before login */}
+        {!isLoggedIn ? (
+          <div className="header__auth-buttons">
+            <button
+            className="header__auth-button"
+            onClick={onRegisterClick}
+            type="button"
+            >
+              Sign up
+            </button>
+            <button
+            className="header__auth-button"
+            onClick={onLoginClick}
+            type="button"
+            >
+              Log in
+            </button>
+          </div>
+        ) : (
+        <>
         <button
           onClick={handleAddClick}
           type="button"
@@ -63,16 +83,27 @@ function Header({ handleAddClick, weatherData }) {
         >
           + Add clothes
         </button>
+
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
+            <p className="header__username">
+              {currentUser?.name || "User"}
+              </p>
+            {currentUser?.avatar ? (
             <img
               className="header__avatar"
-              src={avatar}
-              alt="Terrence Tegegne"
+              src={currentUser.avatar}
+              alt={currentUser.name}
             />
+            ) : (
+              <div className="header__avatar-placeholder">
+                {currentUser?.name?.charAt(0) || "U"}
+              </div>
+            )}
           </div>
         </Link>
+        </>
+        )}
       </header>
 
       <MobileDrawer

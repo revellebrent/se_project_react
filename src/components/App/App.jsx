@@ -11,11 +11,14 @@ import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 // Utility imports
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { register, authorize, checkToken } from "../../utils/auth";
 
 // Style imports
 import "./App.css";
@@ -54,6 +57,26 @@ function App() {
   };
   const [itemDelete, setItemDelete] = useState();
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const openRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+    setIsLoginModalOpen(false);
+  };
+
+  const closeRegisterModal = () => setIsRegisterModalOpen(false);
+
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+    setIsRegisterModalOpen(false);
+  };
+
+  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -118,6 +141,61 @@ function App() {
       .catch(console.error);
   }, []);
 
+  // Check token on initial load and Auto-login if valid
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((userData) => {
+          setIsLoggedIn(true);
+          setCurrentUser(userData);
+        })
+        .catch((err) => {
+          console.error("Token check failed:", err.message);
+          setIsLoggedIn(false);
+          setCurrentUser(null);
+          localStorage.removeItem("jwt");
+        });
+    }
+  }, []);
+
+  // placeholder: auth handlers temporary
+  const handleRegister = ({ name, avatar, email, password }) => {
+    register({ name, avatar, email, password })
+      .then(() => {
+        // After registration, automatically log in the user
+        return authorize({ email, password });
+      })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        return checkToken(res.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeRegisterModal();
+      })
+      .catch((err) => {
+        console.error("Registration error:", err.message);
+      });
+  };
+
+  const handleLogin = ({ email, password }) => {
+    authorize({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        return checkToken(res.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
+        closeLoginModal();
+      })
+      .catch((err) => {
+        console.error("Login error:", err.message);
+      });
+  };
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -128,7 +206,15 @@ function App() {
             isProfilePage && isMobile ? "page__content-mobile" : ""
           }`}
         >
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            weatherData={weatherData}
+            isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
+            onRegisterClick={openRegisterModal}
+            onLoginClick={openLoginModal}
+          />
+
           <Routes>
             <Route
               path="/"
@@ -173,6 +259,19 @@ function App() {
             setItemDelete(undefined);
           }}
           onConfirm={handleCardDelete}
+        />
+
+        <RegisterModal
+          isOpen={isRegisterModalOpen}
+          onClose={closeRegisterModal}
+          onRegister={handleRegister}
+          onSwitchToLogin={openLoginModal}
+        />
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={closeLoginModal}
+          onLogin={handleLogin}
+          onSwitchToRegister={openRegisterModal}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
