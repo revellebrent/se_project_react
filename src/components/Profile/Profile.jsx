@@ -4,11 +4,11 @@ import Header from "../Header/Header";
 
 import "./Profile.css";
 
-function Profile({ onCardClick, onAddClick, clothingItems }) {
+function Profile({ onCardClick, onAddClick, clothingItems, currentUser, onSignOut }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar />
+        <SideBar currentUser={currentUser} onSignOut={onSignOut} />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection

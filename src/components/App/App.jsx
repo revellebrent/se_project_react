@@ -196,6 +196,12 @@ function App() {
       });
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -233,6 +239,8 @@ function App() {
                   onCardClick={handleCardClick}
                   onAddClick={handleAddClick}
                   clothingItems={clothingItems}
+                  currentUser={currentUser}
+                  onSignOut={handleSignOut}
                 />
               }
             />
