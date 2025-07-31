@@ -48,11 +48,11 @@ export default function EditProfileModal({
       values={values}
       handleChange={handleChange}
     >
-      <label htmlFor="name" className="edit-profile__label">
+      <label htmlFor="editProfile-name" className="edit-profile__label">
         Name *
         <input
           type="text"
-          id="name"
+          id="editProfile-name"
           name="name"
           className="edit-profile__input"
           placeholder="Name"
@@ -64,11 +64,11 @@ export default function EditProfileModal({
           disabled={isLoading}
         />
       </label>
-      <label htmlFor="avatar" className="edit-profile__label">
+      <label htmlFor="editProfile-avatar" className="edit-profile__label">
         Avatar  *
         <input
           type="url"
-          id="avatar"
+          id="editProfile-avatar"
           name="avatar"
           className="edit-profile__input"
           placeholder="Avatar URL"

@@ -48,7 +48,7 @@ export default function AddItemModal({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="addItem-name"
           name="name"
           placeholder="Name"
           required
@@ -64,7 +64,7 @@ export default function AddItemModal({
         <input
           type="url"
           className="modal__input"
-          id="imageUrl"
+          id="addItem-imageUrl"
           name="imageUrl"
           placeholder="Image URL"
           required
@@ -79,11 +79,11 @@ export default function AddItemModal({
         {["hot", "warm", "cold"].map((weatherType) => (
           <label
             key={weatherType}
-            htmlFor={weatherType}
+            htmlFor={`addItem-weather-${weatherType}`}
             className="modal__label modal__label_type_radio"
           >
             <input
-              id={weatherType}
+              id={`addItem-weather-${weatherType}`}
               type="radio"
               name="weather"
               className="modal__radio-input"

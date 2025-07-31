@@ -1,9 +1,14 @@
 import "./ItemModal.css";
 import closeWhiteIcon from "../../assets/white-closeicon.png";
 import useModalClose from "../../hooks/useModalClose";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
   useModalClose(isOpen, onClose);
+
+  const isOwner = card.owner === currentUser?._id;
 
   return (
     <div
@@ -30,12 +35,14 @@ function ItemModal({ isOpen, onClose, card, onDelete }) {
         <div className="modal__footer">
           <div className="modal__footer-top">
             <h2 className="modal__caption">{card.name}</h2>
+            {isOwner && (
             <button
               className="modal__delete-btn"
               onClick={() => onDelete(card)}
             >
               Delete item
             </button>
+            )}
           </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>

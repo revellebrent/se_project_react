@@ -11,8 +11,16 @@ function getAuthHeaders() {
 }
 
 function getItems() {
+  const token = localStorage.getItem("jwt");
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
   return request(`${baseUrl}/items`, {
-    headers: getAuthHeaders(),
+    headers,
   });
 }
 
@@ -78,4 +86,32 @@ function removeCardLike(cardId, token) {
   });
 }
 
-export { getItems, deleteItem, addItem, updateUser, getUserData, addCardLike, removeCardLike };
+function signUp({ name, avatar, email, password }) {
+  return request(`${baseUrl}/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+      email,
+      password,
+    }),
+  });
+}
+
+function signIn({ email, password }) {
+  return request(`${baseUrl}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+}
+
+export { getItems, deleteItem, addItem, updateUser, getUserData, addCardLike, removeCardLike, signUp, signIn };
