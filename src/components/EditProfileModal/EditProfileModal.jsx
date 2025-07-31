@@ -42,7 +42,7 @@ export default function EditProfileModal({
       onClose={onClose}
       title="Change profile data"
       name="edit-profile"
-      buttonText={isLoading ? "Saving..." : "Save"}
+      buttonText={isLoading ? "Saving..." : "Save changes"}
       onSubmit={handleSubmit}
       disabled={isLoading}
       values={values}

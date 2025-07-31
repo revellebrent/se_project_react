@@ -6,8 +6,9 @@
 }
 
 .modal__title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
   color: #000;
   margin: 0;
 }
@@ -22,25 +23,30 @@
   display: flex;
   flex-direction: column;
   font-size: 16px;
+  line-height: 20px;
   font-weight: 700;
-  color: #333;
+  color: #000;
 }
 
 .edit-profile__input {
+  font-family: "CabinetGrotesk", sans-serif;
   margin-top: 8px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #000;
   font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
   color: rgba(0, 0, 0, 0.8);
+  outline: none;
 }
 
 .modal__submit {
-  margin-top: 32px;
+  margin-top: 12px;
   padding: 12px;
   font-size: 16px;
   font-weight: 600;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -49,7 +55,7 @@
 }
 
 .modal__submit:hover {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .modal__close {

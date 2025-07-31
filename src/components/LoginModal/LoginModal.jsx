@@ -20,11 +20,17 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
 
   const isFormValid = email && password;
 
-  if (!isOpen) return null;
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("login-modal")) {
+      onClose();
+    }
+  };
 
   return (
-    <div className={`login-modal ${isOpen ? "open" : ""}`}>
-      <div className="login-modal__content">
+    <div className={`login-modal ${isOpen ? "login-modal--open" : ""}`}
+    onClick={handleOverlayClick}>
+      <div className="login-modal__content"
+      onClick={(e) => e.stopPropagation()}>
         <button className="login-modal__close" onClick={onClose}>
           <img src={loginCloseIcon} alt="Close" />
         </button>

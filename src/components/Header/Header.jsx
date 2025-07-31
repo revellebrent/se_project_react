@@ -110,6 +110,7 @@ function Header({ handleAddClick, weatherData, isLoggedIn, currentUser, onRegist
         isOpen={isMobileMenuOpened}
         onClose={toggleMobileMenu}
         handleAddClick={handleAddClick}
+        currentUser={currentUser}
       />
     </>
   );

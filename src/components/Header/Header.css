@@ -9,6 +9,13 @@
   position: relative;
 }
 
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .header__logo {
   margin-right: 24px;
 }
@@ -56,6 +63,18 @@
 .header__link {
   text-decoration: none;
   color: #000;
+}
+
+.header__auth-button {
+  border: none;
+  font-family: "CabinetGrotesk", sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  color: #000;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 768px) {

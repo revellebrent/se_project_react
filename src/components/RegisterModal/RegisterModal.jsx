@@ -24,11 +24,18 @@ function RegisterModal({ isOpen, onClose, onRegister, onSwitchToLogin }) {
 
   const isFormValid = email && password && name && avatar;
 
-  if (!isOpen) return null;
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("register-modal")) {
+      onClose();
+    }
+  };
 
   return (
-    <div className="register-modal">
-      <div className="register-modal-content">
+    <div className={`register-modal ${isOpen ? "register-modal--open" : ""}`}
+    onClick={handleOverlayClick}
+    >
+      <div className="register-modal-content"
+      onClick={(e) => e.stopPropagation()}>
         <button className="register-modal-close" onClick={onClose} aria-label="Register Modal Close">
           <img src={registerCloseIcon} alt="Close" />
         </button>

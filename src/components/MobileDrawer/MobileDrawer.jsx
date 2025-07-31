@@ -5,7 +5,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import avatar from "../../assets/avatar.png";
 import blackCloseIcon from "../../assets/black-closeicon.svg";
 
-function MobileDrawer({ isOpen, onClose, handleAddClick }) {
+function MobileDrawer({ isOpen, onClose, handleAddClick, currentUser }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
       onClose();
@@ -37,8 +37,20 @@ function MobileDrawer({ isOpen, onClose, handleAddClick }) {
         </button>
 
         <div className="mobile-drawer__user">
-          <p className="mobile-drawer__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Avatar" className="mobile-drawer__avatar" />
+          <p className="mobile-drawer__username">
+            {currentUser?.name || "User"}
+            </p>
+            {currentUser?.avatar ? (
+          <img
+          src={currentUser.avatar}
+          alt={currentUser.name}
+          className="mobile-drawer__avatar"
+          />
+        ) : (
+          <div className="mobile-drawer__avatar-placeholder">
+            {currentUser?.name?.charAt(0) || "U"}
+        </div>
+        )}
         </div>
 
         <button

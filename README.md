@@ -15,6 +15,7 @@ A React-based application for managing clothing items to wear for the current te
 - Styled using custom CSS and media queries.
 - Displays current temperature.
 - Hamburger icon on small screens.
+- Like Clothing Items - Like or Unlike clothing items functionality.
 
 ## Technologies Used
 - React
@@ -32,4 +33,7 @@ A React-based application for managing clothing items to wear for the current te
 
 ## Deployment Link
 [Check out the deployed project here](https://revellebrent.github.io/se_project_react/)
+
+## Backend Repository
+This frontend is connected to the backend project [se_project_express](https://github.com/revellebrent/se_project_express)
 

@@ -5,15 +5,18 @@ function SideBar({ currentUser, onSignOut, onEditProfileClick }) {
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar">
-        <img
-          className="sidebar__avatar"
-          src={currentUser?.avatar || avatar}
-          alt={currentUser?.name || "User avatar"}
-        />
-        <div className="sidebar__user">
-          <p className="sidebar__username">
+        <div className="sidebar__top">
+          <img
+            className="sidebar__avatar"
+            src={currentUser?.avatar || avatar}
+            alt={currentUser?.name || "User avatar"}
+          />
+           <p className="sidebar__username">
             {currentUser?.name || "User Name"}
           </p>
+        </div>
+
+        <div className="sidebar__button-group">
           <button className="sidebar__change" onClick={onEditProfileClick}>
             Change profile data
           </button>
