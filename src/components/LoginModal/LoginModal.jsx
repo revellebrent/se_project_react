@@ -13,9 +13,16 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
     }
   }, [isOpen]);
 
+  const [loginError, setLoginError] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password });
+    setLoginError("");
+    onLogin({ email, password })
+      .catch((error) => {
+        setLoginError("Invalid email or password. Please try again.");
+        console.error("Login error:", error);
+      });
   };
 
   const isFormValid = email && password;
@@ -59,7 +66,7 @@ function LoginModal({ isOpen, onClose, onLogin, onSwitchToRegister }) {
               required
             />
           </label>
-
+          {loginError && <p className="login-modal__error">{loginError}</p>}
           <div className="login-modal__actions">
             <button
               type="submit"

@@ -9,7 +9,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.3s, opacity 0.3s;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "CabinetGrotesk";
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -29,7 +29,7 @@
   width: 496px;
   position: relative;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "CabinetGrotesk";
 }
 
 .register-modal-close {

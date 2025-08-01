@@ -27,7 +27,6 @@ import { updateUser } from "../../utils/api";
 // Style imports
 import "./App.css";
 import "../../vendor/fonts.css";
-// import { defaultClothingItems } from "../../utils/constants"; //temporary
 import { getItems, deleteItem, addItem, addCardLike, removeCardLike } from "../../utils/api";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 

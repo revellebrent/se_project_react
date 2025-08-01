@@ -40,7 +40,7 @@
 
 
 .sidebar__change{
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "CabinetGrotesk";
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
@@ -53,7 +53,7 @@
 }
 
 .sidebar__logout {
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "CabinetGrotesk";
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
