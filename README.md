@@ -1,39 +1,92 @@
-# Project: React
+WTWR (What To Wear?) — Frontend
 
-A React-based application for managing clothing items to wear for the current temperatures and weather. Each garment is displayed as a card, and clicking a card opens a modal with the items name and the status of the temperature. The modal features smooth transitions and is mobile-optimized, behaving like a bottom sheet on smaller screens. 
+A React app that suggests clothing based on current weather and lets users manage their wardrobe (add, like, and view items). Built with React + Vite, talks to a Node/Express API.
 
-## Features
-- Live Temperature Integration: The app fetches and displays the current temperature in your area using a weather API.
-- Geolocation Support: Detects user's location via latitude and longitude.
-- Dynamic Weather Cards: Cards change for conditions of the forecast as well as day/night time.
-- Recommendation of what to wear for the current environment.
-- Add new clothing items. 
-- Modal preview for each item with transition animations.
-- Responsive layout with mobile drawer support.
-- Keyboard and overlay click to close modals.
-- Smooth Animations: Modals appear with clean fade-and-slide transitions.
-- Styled using custom CSS and media queries.
-- Displays current temperature.
-- Hamburger icon on small screens.
-- Like Clothing Items - Like or Unlike clothing items functionality.
+Live Sites
 
-## Technologies Used
-- React
-- JavaScript (ES6+)
-- CSS
-- HTML5
-- Git & GitHub
+Frontend: https://wardrobe411.csproject.org
 
-## Screenshots
-![Full Screen](./src/assets/screenshots/fullscreen.png)
-![Garment Modal](./src/assets/screenshots/garment-modal.png)
-![Item Modal](./src/assets/screenshots/item-modal.png)
-![Slide Drawer](./src/assets/screenshots/slide-drawer.png)
-![Small Screen](./src/assets/screenshots/small-screen.png)
+API: https://api.wardrobe411.csproject.org
 
-## Deployment Link
-[Check out the deployed project here](https://revellebrent.github.io/se_project_react/)
+Features
 
-## Backend Repository
-This frontend is connected to the backend project [se_project_express](https://github.com/revellebrent/se_project_express)
+Weather-aware suggestions (uses your location)
 
+Add/delete clothing items
+
+Like/unlike items
+
+Auth: signup/signin, persist JWT in localStorage
+
+Responsive UI with modal dialogs and mobile drawer
+
+Tech Stack
+
+React 18, React Router 6
+
+Vite (dev server & build)
+
+Plain CSS
+
+Deployed via nginx (static) + PM2/nginx for backend
+
+Configuration
+API base URL
+
+api.js and auth.js choose the base URL by environment:
+
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wardrobe411.csproject.org"
+    : "http://localhost:3001";
+
+
+No frontend .env required for this setup.
+
+package.json
+
+Set the homepage to your root domain (no www or api):
+
+"homepage": "https://wardrobe411.csproject.org"
+
+Scripts
+# start dev server
+npm run dev
+
+# production build
+npm run build
+
+# preview local build
+npm run preview
+
+Deploy (static files)
+
+Build locally:
+
+npm run build
+
+
+Copy the build to the server (adjust user/host if needed):
+
+scp -r ./dist/* revellebrent@wardrobe411.csproject.org:/home/revellebrent/frontend
+
+
+nginx serves from /home/revellebrent/frontend (already configured).
+
+Project Structure (minimal)
+src/
+  assets/
+  components/
+  contexts/
+  hooks/
+  utils/
+  index.jsx
+  App.jsx
+  styles.css
+
+Backend
+
+Repo: https://github.com/revellebrent/se_project_express
+Base URL (prod): https://api.wardrobe411.csproject.org
+
+If you want me to add a tiny “Troubleshooting” section or a deploy script to package.json (e.g., "deploy": "npm run build && scp -r ./dist/* revellebrent@wardrobe411.csproject.org:/home/revellebrent/frontend"), say the word and I’ll drop it in.
